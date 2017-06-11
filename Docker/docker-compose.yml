@@ -1,0 +1,28 @@
+version: '3'
+networks:
+  wordpress_network:
+
+#volumes:
+#  fs-xxxxx:    
+#    driver: rexray or efs
+#    driver_opts:
+#      share: "fs-xxxxx"
+
+
+services:
+  wordpress:
+    image: richarvey/nginx-php-fpm:latest
+    ports:
+      - 80:80
+    networks:
+      - wordpress_network
+    volumes:
+      - ../wordpress:/var/www/html
+#      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+#      - ./nginx/ssl-key:/etc/nginx/ssl-key
+    deploy:
+      mode: replicated
+      replicas: 3
+      labels: [APP=WEBSERVER]
+      restart_policy:
+        condition: on-failure
