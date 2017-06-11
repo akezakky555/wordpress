@@ -10,7 +10,7 @@ networks:
 
 
 services:
-  wordpress:
+  webserver:
     image: richarvey/nginx-php-fpm:latest
     ports:
       - 80:80
@@ -24,5 +24,21 @@ services:
       mode: replicated
       replicas: 3
       labels: [APP=WEBSERVER]
+      restart_policy:
+        condition: on-failure
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=wvlyfvpjkcV8otg;hpgshp
+      - MYSQL_DATABASE=wpdb
+    volumes:
+      - ../../mysql-data:/var/lib/mysql
+    networks:
+      - wordpress_network
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels: [APP=DB]
       restart_policy:
         condition: on-failure
