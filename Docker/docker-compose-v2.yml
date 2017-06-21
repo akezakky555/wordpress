@@ -54,7 +54,7 @@ services:
       - mariadb-master
     image: 'bitnami/mariadb:latest'
     networks:
-      - www_network
+      - wordpress_network
     environment:
       - MARIADB_REPLICATION_MODE=slave
       - MARIADB_REPLICATION_USER=KingRepl
