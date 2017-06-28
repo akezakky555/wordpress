@@ -1,7 +1,7 @@
 version: '3'
 networks:
   wordpress_network:
-    driver: overlay
+#    driver: overlay
 #volumes:
 #  fs-xxxxx:    
 #    driver: rexray or efs

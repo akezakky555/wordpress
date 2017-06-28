@@ -215,10 +215,10 @@ $wpdb->check_tcp_responsiveness = true;
  * the 'global' dataset. (Every table is in 'global' by default.)
  */
 $wpdb->add_database(array(
-	'host'     => DB_HOST,     // If port is other than 3306, use host:port.
-	'user'     => DB_USER,
-	'password' => DB_PASSWORD,
-	'name'     => DB_NAME,
+	'host'     => 'mariadb-master',     // If port is other than 3306, use host:port.
+	'user'     => 'zakrified909',
+	'password' => 'vpjkcV8d^ot0Ut555',
+	'name'     => 'wpdb'
 ));
 
 /**
@@ -227,9 +227,9 @@ $wpdb->add_database(array(
  */
 $wpdb->add_database(array(
 	'host'     => 'mariadb-slave',     // If port is other than 3306, use host:port.
-	'user'     => DB_USER,
-	'password' => DB_PASSWORD,
-	'name'     => DB_NAME,
+	'user'     => 'zakrified909',
+	'password' => 'vpjkcV8d%ot0Ut555',
+	'name'     => 'wpdb',
 	'write'    => 0,
 	'read'     => 1,
 	'dataset'  => 'global',
